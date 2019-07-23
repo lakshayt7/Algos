@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+long int max(long int a, long int b){
+    if(a>b)
+        return a;
+    else
+        return b;
+}
+
+int main() {
+	int t;cin>>t;
+	while(t--)
+	{
+	 long int n;cin>>n;
+	 long int A[n];
+	 for(long int i = 0 ; i < n ; i++)
+	    cin>>A[i];
+	 long int m_curr = 0, m = -213000000;
+	 for(long int i = 0 ; i < n ; i ++){
+	     m_curr = max(A[i], A[i] + m_curr);
+	     m = max(m, m_curr);
+	 }
+	 cout<<m<<'\n';
+	}
+	return 0;
+	return 0;
+}
