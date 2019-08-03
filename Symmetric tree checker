@@ -1,0 +1,25 @@
+bool check(struct Node* l, struct Node* r){
+    if(l->key!=r->key)
+        return 0;
+    if(l->left!=NULL && r->right!=NULL){
+        if(l->right!=NULL &&r->left!=NULL)
+            return check(l->left, r->right)&&check(l->right, r->left);
+        else if(l->right == NULL && r->left == NULL)
+            return check(l->left, r->right);
+    }
+    else if(l->right != NULL && r->left != NULL && l->left == NULL && r->right ==NULL)
+        return check(l->right, r->left);
+    else if(l->right == NULL && r->left == NULL && l->left == NULL && r->right ==NULL)
+        return 1;
+    else
+        return 0;
+}
+bool isSymmetric(struct Node* root)
+{
+    if(root->left == NULL && root->right == NULL)
+        return 1;
+    else if(root->left!=NULL && root->right!=NULL){
+        return check(root->left, root->right);
+    }
+    return 0;
+}
